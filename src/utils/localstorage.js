@@ -129,17 +129,44 @@ export const updateCurrentUser = (updatedUser) => {
 // ===============================
 // Habit CRUD
 // ===============================
-
-export const addHabit = (habit) => {
+export const addHabit = (habitData) => {
   const user = getCurrentUser();
 
   if (!user) return;
+
+  const habit = {
+    id: crypto.randomUUID(),
+
+    name: habitData.name,
+
+    goal: Number(habitData.goal),
+
+    unit: habitData.unit,
+
+    streak: 0,
+
+    longestStreak: 0,
+
+    createdAt: new Date().toISOString(),
+
+    active: true,
+  };
 
   user.habits.push(habit);
 
   user.stats.totalHabits = user.habits.length;
 
   updateCurrentUser(user);
+
+  return habit;
+};
+
+export const getHabits = () => {
+  const user = getCurrentUser();
+
+  if (!user) return [];
+
+  return user.habits;
 };
 
 export const deleteHabit = (habitId) => {

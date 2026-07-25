@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { loginUser } from "../utils/localStorage";
+import { loginUser } from "../utils/localstorage"
 import "../styles/login.css";
 import { useNavigate } from "react-router-dom";
 import PageTransition from "../components/PageTransition";

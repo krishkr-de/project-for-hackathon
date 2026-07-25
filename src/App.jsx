@@ -3,7 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/login";
 import Home from "./pages/Home";
 
-import { getCurrentUser } from "./utils/localStorage";
+import { getCurrentUser } from "./utils/localstorage";
 
 function App() {
 

@@ -1,0 +1,66 @@
+.addHabit{
+
+width:90%;
+
+max-width:900px;
+
+margin:auto;
+
+margin-top:50px;
+
+}
+
+.addHabit h2{
+
+margin-bottom:25px;
+
+}
+
+.addHabit form{
+
+display:grid;
+
+grid-template-columns:2fr 1fr 1fr auto;
+
+gap:15px;
+
+}
+
+.addHabit input,
+.addHabit select{
+
+padding:15px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:1rem;
+
+}
+
+.addHabit button{
+
+padding:15px 25px;
+
+background:#00d4ff;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:bold;
+
+}
+
+@media(max-width:900px){
+
+.addHabit form{
+
+grid-template-columns:1fr;
+
+}
+
+}

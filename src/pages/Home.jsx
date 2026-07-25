@@ -1,27 +1,41 @@
+import { useState } from "react";
+
 import Navbar from "../components/NAVBAR";
-import { getCurrentUser } from "../utils/localStorage";
+import Hero from "../components/hero";
+import AddHabit from "../components/AddHabit";
+import HabitList from "../components/HabitList";
 import PageTransition from "../components/PageTransition";
 
+import { getHabits } from "../utils/localstorage";
+
 const Home = () => {
-  const user = getCurrentUser();
+
+  const [habits, setHabits] = useState(getHabits());
 
   return (
     <PageTransition>
+
       <Navbar />
 
       <main
         style={{
           paddingTop: "110px",
-          paddingInline: "40px",
           minHeight: "100vh",
           background: "#021b2b",
           color: "white",
         }}
       >
-        <h1>Welcome, {user?.username} 👋</h1>
+        <Hero />
 
-        <p>Ready to build great habits today?</p>
+        <AddHabit
+          habits={habits}
+          setHabits={setHabits}
+        />
+
+        <HabitList habits={habits} />
+
       </main>
+
     </PageTransition>
   );
 };
