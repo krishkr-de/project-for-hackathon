@@ -1,12 +1,14 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { generateReview } from "../utils/gemini";
-
+import "../styles/aiReview.css"
 const AIReview = ({ habits }) => {
   const [loading, setLoading] = useState(false);
   const [review, setReview] = useState("");
 
   const handleReview = async () => {
+    if (loading) return;
+
     setLoading(true);
 
     try {
@@ -15,17 +17,17 @@ const AIReview = ({ habits }) => {
     } catch (err) {
       console.error(err);
       setReview("Failed to generate AI review.");
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
     <section className="ai-card">
       <h2>🌊 TrackLess Coach</h2>
 
-      <button onClick={handleReview}>
-        {loading ? "Thinking..." : "Generate Review"}
+      <button disabled={loading} onClick={handleReview}>
+        {loading ? "🌊 AI is Thinking..." : "✨ Generate AI Review"}
       </button>
 
       {review && (
