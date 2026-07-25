@@ -1,0 +1,144 @@
+.habit-card{
+    background:#0b3448;
+    border-radius:26px;
+    padding:32px;
+    margin:25px 0;
+    border:1px solid rgba(255,255,255,.05);
+
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.habit-card:hover{
+
+transform:translateY(-4px);
+
+}
+
+.habit-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+.habit-header h2{
+    font-size:3rem;
+    margin:0;
+}
+
+.goal{
+    margin-top:6px;
+    opacity:.7;
+    font-size:1.3rem;
+}
+
+.streak{
+    background:#233b35;
+    color:#ffbe4d;
+    padding:12px 22px;
+    border-radius:40px;
+    font-weight:700;
+}
+
+.counter{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+}
+
+.counter h3{
+    font-size:2.4rem;
+    width:180px;
+    text-align:center;
+}
+
+.counter button{
+    width:72px;
+    height:72px;
+    border:none;
+    border-radius:50%;
+    background:#14b7df;
+    color:white;
+    font-size:2rem;
+    cursor:pointer;
+}
+.counter button:hover{
+
+transform:scale(1.08);
+
+}
+
+.progress{
+
+height:14px;
+
+background:#072434;
+
+border-radius:50px;
+
+overflow:hidden;
+
+}
+
+.progress-fill{
+
+height:100%;
+
+background:linear-gradient(
+90deg,
+#00d4ff,
+#5cefff
+);
+
+transition:.3s;
+
+}
+
+.percent{
+
+font-size:1.2rem;
+
+font-weight:700;
+
+margin-top:-8px;
+
+}
+
+.card-footer{
+display:flex;
+justify-content:flex-end;
+}
+
+.delete-btn{
+
+background:none;
+
+border:none;
+
+color:#ff6262;
+
+font-size:1rem;
+
+cursor:pointer;
+
+}
+
+.delete-btn:hover{
+
+color:#ff3030;
+
+}
+.habit-card>*{
+margin:0;
+}
+.habit-card{
+
+gap:18px;
+
+}
+.counter button:disabled{
+    opacity:.35;
+    cursor:not-allowed;
+}

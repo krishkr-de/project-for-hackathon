@@ -1,0 +1,31 @@
+.ai-review{
+    margin:60px auto;
+    width:90%;
+    background:#10364a;
+    border-radius:20px;
+    padding:35px;
+}
+
+.ai-review h2{
+    margin-bottom:25px;
+}
+
+.ai-review button{
+    padding:14px 28px;
+    border:none;
+    border-radius:12px;
+    background:#18b7db;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.review-box{
+    margin-top:25px;
+    background:#082635;
+    padding:25px;
+    border-radius:15px;
+    line-height:1.8;
+    color:white;
+    font-size:17px;
+}

@@ -1,41 +1,41 @@
 import { useState } from "react";
-
+import AIReview from "../components/AIReview";
 import Navbar from "../components/NAVBAR";
-import Hero from "../components/hero";
 import AddHabit from "../components/AddHabit";
 import HabitList from "../components/HabitList";
 import PageTransition from "../components/PageTransition";
-
-import { getHabits } from "../utils/localstorage";
-
+import DashboardStats from "../components/DashboardStats";
+import { getCurrentUser, getHabits } from "../utils/localstorage";
+import ProgressChart from "../components/ProgressChart";
 const Home = () => {
-
+  const user = getCurrentUser();
   const [habits, setHabits] = useState(getHabits());
+
+  const refreshHabits = () => {
+    setHabits(getHabits());
+  };
 
   return (
     <PageTransition>
-
       <Navbar />
 
-      <main
-        style={{
-          paddingTop: "110px",
-          minHeight: "100vh",
-          background: "#021b2b",
-          color: "white",
-        }}
-      >
-        <Hero />
+      <main className="home">
+        <section className="dashboard-header">
+          <h1>👋 Welcome, {user?.username}</h1>
+          <p>Track your habits. Build your future.</p>
+        </section>
+        <DashboardStats habits={habits} />
+        <AIReview habits={habits} />
+        <ProgressChart habits={habits} />
 
-        <AddHabit
+        <AddHabit habits={habits} setHabits={setHabits} />
+
+        <HabitList
           habits={habits}
           setHabits={setHabits}
+          refresh={refreshHabits}
         />
-
-        <HabitList habits={habits} />
-
       </main>
-
     </PageTransition>
   );
 };

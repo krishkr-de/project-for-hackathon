@@ -135,23 +135,24 @@ export const addHabit = (habitData) => {
   if (!user) return;
 
   const habit = {
-    id: crypto.randomUUID(),
+  id: crypto.randomUUID(),
 
-    name: habitData.name,
+  name: habitData.name,
 
-    goal: Number(habitData.goal),
+  goal: Number(habitData.goal),
 
-    unit: habitData.unit,
+  unit: habitData.unit,
 
-    streak: 0,
+  streak: 0,
 
-    longestStreak: 0,
+  longestStreak: 0,
 
-    createdAt: new Date().toISOString(),
+  today: 0,
 
-    active: true,
-  };
+  createdAt: new Date().toISOString(),
 
+  active: true,
+};
   user.habits.push(habit);
 
   user.stats.totalHabits = user.habits.length;
@@ -172,7 +173,7 @@ export const getHabits = () => {
 export const deleteHabit = (habitId) => {
   const user = getCurrentUser();
 
-  if (!user) return;
+  if (!user) return [];
 
   user.habits = user.habits.filter(
     (habit) => habit.id !== habitId
@@ -181,6 +182,8 @@ export const deleteHabit = (habitId) => {
   user.stats.totalHabits = user.habits.length;
 
   updateCurrentUser(user);
+
+  return user.habits;
 };
 
 export const updateHabits = (habits) => {
@@ -245,6 +248,32 @@ export const saveTomorrowPlan = (response) => {
     date: new Date().toISOString(),
     response,
   };
+
+  updateCurrentUser(user);
+};
+export const updateHabitProgress = (habitId, value) => {
+  const user = getCurrentUser();
+
+  if (!user) return;
+
+  user.habits = user.habits.map((habit) => {
+
+    if (habit.id !== habitId) return habit;
+
+    const today = Math.max(0, value);
+
+    const streak =
+      today >= habit.goal
+        ? habit.streak + 1
+        : habit.streak;
+
+    return {
+      ...habit,
+      today,
+      streak,
+      longestStreak: Math.max(habit.longestStreak, streak),
+    };
+  });
 
   updateCurrentUser(user);
 };

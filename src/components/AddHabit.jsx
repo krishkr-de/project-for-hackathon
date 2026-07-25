@@ -5,7 +5,6 @@ import "../styles/addHabit.css";
 import { addHabit } from "../utils/localstorage";
 
 const AddHabit = ({ habits, setHabits }) => {
-
   const [name, setName] = useState("");
 
   const [goal, setGoal] = useState("");
@@ -13,16 +12,22 @@ const AddHabit = ({ habits, setHabits }) => {
   const [unit, setUnit] = useState("Hours");
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
 
     if (!name.trim()) return;
 
-    if (!goal) return;
+    const goalNumber = Number(goal);
+
+    if (!name.trim()) return;
+
+    if (isNaN(goalNumber) || goalNumber <= 0) {
+      alert("Goal must be greater than 0");
+      return;
+    }
 
     const newHabit = addHabit({
       name,
-      goal,
+      goal: goalNumber,
       unit,
     });
 
@@ -37,11 +42,9 @@ const AddHabit = ({ habits, setHabits }) => {
 
   return (
     <section className="addHabit">
-
       <h2>Add New Habit</h2>
 
       <form onSubmit={handleSubmit}>
-
         <input
           type="text"
           placeholder="Habit Name"
@@ -51,15 +54,14 @@ const AddHabit = ({ habits, setHabits }) => {
 
         <input
           type="number"
+          min="1"
+          step="0.5"
           placeholder="Daily Goal"
           value={goal}
           onChange={(e) => setGoal(e.target.value)}
         />
 
-        <select
-          value={unit}
-          onChange={(e) => setUnit(e.target.value)}
-        >
+        <select value={unit} onChange={(e) => setUnit(e.target.value)}>
           <option>Hours</option>
           <option>Minutes</option>
           <option>Pages</option>
@@ -67,14 +69,8 @@ const AddHabit = ({ habits, setHabits }) => {
           <option>Glasses</option>
         </select>
 
-        <button>
-
-          Add Habit
-
-        </button>
-
+        <button>Add Habit</button>
       </form>
-
     </section>
   );
 };
