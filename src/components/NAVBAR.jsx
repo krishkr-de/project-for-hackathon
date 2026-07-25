@@ -14,23 +14,23 @@ const Navbar = () => {
         <nav>
           <ul className="nav-links">
             <li>
-              <a href="#hero">Dashboard</a>
+              <a href="#">Dashboard</a>
             </li>
 
             <li>
-              <a href="#habits">Habits</a>
+              <a href="#">Habits</a>
             </li>
 
             <li>
-              <a href="#progress">Progress</a>
+              <a href="#">Progress</a>
             </li>
 
             <li>
-              <a href="#reflection">AI Insights</a>
+              <a href="#">AI Insights</a>
             </li>
 
             <li>
-              <a href="#planner">Planner</a>
+              <a href="#">Planner</a>
             </li>
           </ul>
         </nav>

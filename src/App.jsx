@@ -1,13 +1,46 @@
-import LoginPage from './pages/login.jsx'
-import './index.css';
+import { Routes, Route, Navigate } from "react-router-dom";
 
-const App = () => {
+import Login from "./pages/login";
+import Home from "./pages/Home";
+
+import { getCurrentUser } from "./utils/localStorage";
+
+function App() {
+
+  const user = getCurrentUser();
+
   return (
-    <div>
-      <LoginPage />
 
-    </div>
-  )
+    <Routes>
+
+      <Route
+
+        path="/"
+
+        element={
+          user
+          ? <Navigate to="/home"/>
+          : <Login/>
+        }
+
+      />
+
+      <Route
+
+        path="/home"
+
+        element={
+          user
+          ? <Home/>
+          : <Navigate to="/"/>
+        }
+
+      />
+
+    </Routes>
+
+  );
+
 }
 
-export default App
+export default App;

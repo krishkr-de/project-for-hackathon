@@ -1,27 +1,36 @@
 import { useState } from "react";
+import { loginUser } from "../utils/localStorage";
 import "../styles/login.css";
+import { useNavigate } from "react-router-dom";
+import PageTransition from "../components/PageTransition";
 
 const Login = () => {
   const [name, setName] = useState("");
-
+  const navigate = useNavigate(); 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    if (!name.trim()) {
+    const trimmedName = name.trim();
+
+    if (!trimmedName) {
       alert("Please enter your name.");
       return;
     }
 
-    localStorage.setItem("username", name.trim());
+    // Login or create user
+    const user = loginUser(trimmedName);
 
-    alert(`Welcome, ${name}!`);
-    
-    // Later, when you add React Router, you can navigate here.
+    console.log("Logged in user:", user);
+
+    navigate("/home");
+
+    // Later
+    // navigate("/home");
   };
 
   return (
-    <div className="login-page">
-      {/* Background Glow */}
+  <PageTransition>
+      <div className="login-page">
       <div className="bg-circle circle1"></div>
       <div className="bg-circle circle2"></div>
       <div className="bg-circle circle3"></div>
@@ -60,6 +69,7 @@ const Login = () => {
         </p>
       </div>
     </div>
+  </PageTransition>
   );
 };
 

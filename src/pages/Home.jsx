@@ -1,21 +1,29 @@
+import Navbar from "../components/NAVBAR";
+import { getCurrentUser } from "../utils/localStorage";
+import PageTransition from "../components/PageTransition";
 
 const Home = () => {
+  const user = getCurrentUser();
+
   return (
-    <div>
-      
-    </div>
-  )
-}
+    <PageTransition>
+      <Navbar />
 
-export default Home
-import React from 'react'
+      <main
+        style={{
+          paddingTop: "110px",
+          paddingInline: "40px",
+          minHeight: "100vh",
+          background: "#021b2b",
+          color: "white",
+        }}
+      >
+        <h1>Welcome, {user?.username} 👋</h1>
 
-const Home = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+        <p>Ready to build great habits today?</p>
+      </main>
+    </PageTransition>
+  );
+};
 
-export default Home
+export default Home;
