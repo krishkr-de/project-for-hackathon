@@ -260,12 +260,16 @@ export const updateHabitProgress = (habitId, value) => {
 
     if (habit.id !== habitId) return habit;
 
+    const previousToday = habit.today;
     const today = Math.max(0, value);
 
-    const streak =
-      today >= habit.goal
-        ? habit.streak + 1
-        : habit.streak;
+    const reachedGoalFirstTime =
+      previousToday < habit.goal &&
+      today >= habit.goal;
+
+    const streak = reachedGoalFirstTime
+      ? habit.streak + 1
+      : habit.streak;
 
     return {
       ...habit,
