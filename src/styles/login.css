@@ -1,0 +1,333 @@
+/* Google Font */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+.login-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #021b2b,
+    #053f5e,
+    #0a6e8c,
+    #00a8e8
+  );
+  background-size: 400% 400%;
+  animation: oceanGradient 12s ease infinite;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* Animated Background */
+
+@keyframes oceanGradient {
+  0% {
+    background-position: 0%;
+  }
+  50% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: 0%;
+  }
+}
+
+/* Floating Glows */
+
+.bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+}
+
+.circle1 {
+  width: 320px;
+  height: 320px;
+  background: #00d4ff;
+  top: -80px;
+  left: -80px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.circle2 {
+  width: 250px;
+  height: 250px;
+  background: #0099ff;
+  bottom: -60px;
+  right: -60px;
+  animation: float 10s ease-in-out infinite;
+}
+
+.circle3 {
+  width: 180px;
+  height: 180px;
+  background: #66f7ff;
+  top: 60%;
+  left: 20%;
+  animation: float 7s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-35px);
+  }
+}
+
+/* Container */
+
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+/* Logo */
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.wave {
+  font-size: 2.5rem;
+}
+
+.logo h1 {
+  color: white;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Tagline */
+
+.tagline {
+  margin-top: 10px;
+  color: rgba(255,255,255,.85);
+  font-size: 1rem;
+}
+
+.tagline span {
+  color: #7ef9ff;
+  font-weight: 600;
+}
+
+/* Glass Card */
+
+.login-card {
+  margin-top: 40px;
+
+  background: rgba(255,255,255,.08);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255,255,255,.15);
+
+  border-radius: 25px;
+
+  padding: 40px 30px;
+
+  box-shadow:
+      0 10px 40px rgba(0,0,0,.35);
+
+  transition: .4s;
+}
+
+.login-card:hover{
+    transform: translateY(-6px);
+}
+
+/* Heading */
+
+.login-card h2{
+    color:white;
+    font-size:2rem;
+    margin-bottom:10px;
+}
+
+.login-card p{
+    color:rgba(255,255,255,.75);
+    margin-bottom:30px;
+    line-height:1.5;
+}
+
+/* Input */
+
+.login-card input{
+
+    width:100%;
+
+    padding:16px 20px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    font-size:1rem;
+
+    transition:.3s;
+
+    margin-bottom:20px;
+
+}
+
+.login-card input::placeholder{
+
+    color:#d4f4ff;
+
+}
+
+.login-card input:focus{
+
+    background:rgba(255,255,255,.18);
+
+    box-shadow:0 0 18px rgba(0,212,255,.45);
+
+}
+
+/* Button */
+
+.login-card button{
+
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#00d4ff;
+
+    color:#03283c;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+.login-card button:hover{
+
+    transform:translateY(-3px);
+
+    background:#6ef5ff;
+
+    box-shadow:
+    0 0 20px #00d4ff,
+    0 0 45px rgba(0,212,255,.5);
+
+}
+
+/* Footer */
+
+.footer-text{
+
+    margin-top:25px;
+
+    color:rgba(255,255,255,.75);
+
+    font-size:.9rem;
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.logo h1{
+
+    font-size:2.3rem;
+
+}
+
+.login-card{
+
+    padding:30px 22px;
+
+}
+
+.login-card h2{
+
+    font-size:1.7rem;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.login-container{
+
+    padding:18px;
+
+}
+
+.login-card{
+
+    border-radius:20px;
+
+    padding:25px 18px;
+
+}
+
+.logo h1{
+
+    font-size:2rem;
+
+}
+
+.tagline{
+
+    font-size:.9rem;
+
+}
+
+.login-card input{
+
+    padding:14px;
+
+}
+
+.login-card button{
+
+    padding:14px;
+
+}
+
+}
